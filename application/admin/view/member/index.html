@@ -26,7 +26,7 @@
 			{foreach $lists as $k=>$v}
 				<tr>
 					<td>{$v.username}</td>
-					<td>{$v.roleid}</td>
+					<td>{$rolearr[$v['roleid']]}</td>
 					<td>{:date('Y-m-d',$v.regtime)}</td>
 					<td>{$v.logintimes}</td>
 					<td>{if $v.logintime}{:date('Y-m-d',$v.logintime)}{/if}</td>

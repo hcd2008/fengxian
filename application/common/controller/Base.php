@@ -11,8 +11,9 @@
 		 * @copyright 风险评估中心信息平台
 		 */
 		public function __construct(){
-			$this->isLogin();
 			parent::__construct();
+			$this->isLogin();
+
 		}
 		/**
 		 * 判断是否已登录
@@ -22,8 +23,7 @@
 		 * @return    boolean                  [description]
 		 */
 		public function isLogin(){
-			$uid=isset($_SESSION['uid'])?intval($_SESSION['uid']):0;
-			if($uid==0){
+			if(!Session::has('uid')){
 				$this->redirect("login/index");
 			}
 		}

@@ -1,0 +1,45 @@
+{layout name="layout"}
+<br>
+<div class="container">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" {if $status==1}class="active"{/if}><a href="{:url('msg/index')}">信息列表</a></li>
+	  <li role="presentation" {if $status==2}class="active"{/if}><a href="{:url('msg/index',array('status'=>2))}">已筛选信息</a></li>
+	  <li role="presentation" {if $status==0}class="active"{/if}><a href="{:url('msg/index',array('status'=>0))}">已删除信息</a></li>
+	</ul>
+	<div class="search">
+		<form class="form-inline">
+		  <div class="form-group">
+		    <label for="exampleInputName2">标题</label>
+		    <input type="text" name="keyword" class="form-control" id="exampleInputName2" placeholder="标题关键字" value="{if $keyword}{$keyword}{/if}">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail2">&nbsp;&nbsp;来源</label>
+		    <input type="text" name="laiyuan" class="form-control" placeholder="来源关键字" value="{if $laiyuan}{$laiyuan}{/if}">
+		  </div>
+		  &nbsp;&nbsp;<input type="submit" value="搜索" class="btn btn-primary">
+		</form>
+	</div>
+	<table class="table table-hover table-bordered table-striped">
+		<tr>
+			<th align="center" width=45%>中文标题</th>
+			<th align="center" width=15%>来源</th>
+			<th align="center" width=20%>上传时间</th>
+			<th align="center" width=20%>操作</th>
+		</tr>
+		{foreach $lists as $k=>$v}
+			<tr>
+				<td>{$v.title_cn}</td>
+				<td align="center">{$v.laiyuan}</td>
+				<td align="center">{:date('Y-m-d',$v['addtime'])}</td>
+				<td align="center">
+					<a href="{:url('index/msg/show',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/kan.png" title="查看"></a>&nbsp;
+					{if $v['status']==1}<a href="{:url('index/msg/jia',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/jia.png" title="加入翻译"></a>&nbsp;{/if}
+					{if $v['status']==2}<a href="{:url('index/msg/jia',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/shan.png" title="从翻译列表中移除"></a>&nbsp;{/if}
+					{if $v['status']>0}<a href="{:url('index/msg/yi',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/delete.png" title="删除"></a>&nbsp;{/if}
+					{if $v['status']==0}<a href="{:url('index/msg/yi',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/huifu.png" title="恢复"></a>&nbsp;{/if}
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+	<div class="pages">{$lists->render()}</div>
+</div>

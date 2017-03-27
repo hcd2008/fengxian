@@ -1,0 +1,27 @@
+.container-bg{
+	background: #009FE3;
+}
+.myimg{
+	text-align: center;
+	padding-top:40px;
+	padding-bottom: 10px;
+}
+
+.main{
+	padding:10px 0;
+}
+.myimg h4{
+	color: #fff;
+}
+.lists{
+	padding-bottom: 40px;
+}
+.myinput{
+	width:400px;
+}
+.red{
+	color: red;
+}
+.search{
+	margin:20px 0;
+}

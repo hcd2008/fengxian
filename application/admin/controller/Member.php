@@ -15,11 +15,12 @@
 			$res=Db::name('member')->where("status",3)->order('userid','desc')->paginate(10);
 			$this->assign("lists",$res);
 			$rolelist=$this->rolelist();
-
+			$rolearr=array();
 			foreach ($rolelist as $k => $v) {
-				
+				$rolearr[$v['id']]=$v['name'];
 			}
-			print_r($this->roleList());
+			$this->assign("rolearr",$rolearr);
+			
 			$this->assign('rolelist',$this->roleList());
 			return $this->fetch();
 		}
@@ -95,7 +96,7 @@
 			if($this->request->isPost()){
 				$param=$this->request->param();
 				isset($param['roleid']) or $this->error('请选择用户角色');
-				$param['password']!='' or $param['passsalt']=random(8);
+				$param['password']=='' or $param['passsalt']=random(8);
 				if($param['passsalt']){
 					$param['password']=dpassword($param['password'],$param['passsalt']);
 				}else{
