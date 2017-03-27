@@ -6,6 +6,7 @@ class Index extends Base
 {
     public function index()
     {
+    	$this->assign("controller",$this->request->controller());
         return $this->fetch();
     }
 }

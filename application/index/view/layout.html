@@ -13,11 +13,11 @@
 <body>
 	<div class="container main" id="bs-example-navbar-collapse-1">
 		<img src="__ASSETS__images/foodmate.gif" alt="">
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="{:url('index/index')}">首页</a></li>
-			<li><a href="{:url('msg/upload')}">上传</a></li>
-			<li><a href="{:url('msg/index')}">筛选</a></li>
-			<li><a href="{:url('msg/index')}">翻译</a></li>
+		<ul class="nav navbar-nav nav-pills navbar-right">
+			<li {if $controller=='Index'}class="active"{/if}><a href="{:url('index/index')}">首页</a></li>
+			<li {if $controller=='Msg'&&$action=='upload'}class="active"{/if}><a href="{:url('msg/upload')}">上传</a></li>
+			<li {if $controller=='Msg'&&$action=='index'}class="active"{/if}><a href="{:url('msg/index')}">筛选</a></li>
+			<li {if $controller=='Msg'&&$action=='tranlist'}class="active"{/if}><a href="{:url('msg/tranList')}">翻译</a></li>
 			<li><a href="{:url('msg/index')}">审核</a></li>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$Think.session.uname}<span class="caret"></span></a>

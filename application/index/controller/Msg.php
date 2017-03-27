@@ -29,11 +29,15 @@
 			}
 			$res=Db::name('info')->where($map)->order('itemid',"desc")->paginate(10);
 			$this->assign("controller",$this->request->controller());
+			$this->assign("action",$this->request->action());
 			$this->assign('laiyuan',$laiyuan);
 			$this->assign('keyword',$keyword);
 			$this->assign("status",$status);
 			$this->assign("lists",$res);
 			return $this->fetch();
+		}
+		public function getList(){
+			
 		}
 		/**
 		 * 上传信息
@@ -66,8 +70,10 @@
 			        echo $file->getError();
 			    }
 			}else{
-				$res=Db::name('info')->where("status",3)->field('itemid,title_cn,addtime')->order('itemid',"desc")->limit(7)->select();
+				$res=Db::name('info')->where("status",1)->field('itemid,title_cn,addtime')->order('itemid',"desc")->limit(7)->select();
 				$this->assign("lists",$res);
+				$this->assign("controller",$this->request->controller());
+				$this->assign("action",$this->request->action());
 				return $this->fetch();
 			}
 		}
@@ -82,6 +88,84 @@
 			$itemid=$param['itemid'];
 			$info=Db::name('info')->where("itemid",$itemid)->find();
 			$this->assign("info",$info);
+			$this->assign("controller",$this->request->controller());
+			$this->assign("action",$this->request->action());
+			return $this->fetch();
+		}
+		/**
+		 * 将信息添加到翻译列表
+		 * @Author   黄传东
+		 * @DateTime 2017-03-27T15:51:27+0800
+		 */
+		public function addInfo(){
+			$param=$this->request->param();
+			isset($param['itemid']) or $this->error("非法访问");
+			$res=Db::name('info')->where("itemid",$param['itemid'])->update(["status"=>2]);
+			if($res){
+				$this->success("将信息添加到翻译列表成功","msg/index");
+			}else{
+				$this->error("失败");
+			}
+		}
+		/**
+		 * 将信息从翻译列表中移除
+		 * @Author   黄传东
+		 * @DateTime 2017-03-27T15:56:41+0800
+		 * @return   [type]                   [description]
+		 */
+		public function rmInfo(){
+			$param=$this->request->param();
+			isset($param['itemid']) or $this->error("非法访问");
+			$res=Db::name('info')->where("itemid",$param['itemid'])->update(["status"=>1]);
+			if($res){
+				$this->success("将信息从翻译列表中移除成功","msg/index");
+			}else{
+				$this->error("失败");
+			}
+		}
+		/**
+		 * 将信息删除
+		 * @Author   黄传东
+		 * @DateTime 2017-03-27T15:58:16+0800
+		 * @return   [type]                   [description]
+		 */
+		public function delInfo(){
+			$param=$this->request->param();
+			isset($param['itemid']) or $this->error("非法访问");
+			$res=Db::name('info')->where("itemid",$param['itemid'])->update(["status"=>0]);
+			if($res){
+				$this->success("删除信息成功","msg/index");
+			}else{
+				$this->error("失败");
+			}
+		}
+		/**
+		 * 恢复已删除信息
+		 * @Author   黄传东
+		 * @DateTime 2017-03-27T15:59:13+0800
+		 * @return   [type]                   [description]
+		 */
+		public function  ryInfo(){
+			$param=$this->request->param();
+			isset($param['itemid']) or $this->error("非法访问");
+			$res=Db::name('info')->where("itemid",$param['itemid'])->update(["status"=>1]);
+			if($res){
+				$this->success("恢复信息成功","msg/index");
+			}else{
+				$this->error("失败");
+			}
+		}
+		/**
+		 * 翻译列表
+		 * @Author   黄传东
+		 * @DateTime 2017-03-27T16:07:16+0800
+		 * @return   [type]                   [description]
+		 */
+		public function tranList(){
+			$param=$this->request->param();
+			extract($param);
+			$this->assign("controller",$this->request->controller());
+			$this->assign("action",$this->request->action());
 			return $this->fetch();
 		}
 	}
