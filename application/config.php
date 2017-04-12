@@ -236,4 +236,20 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    //角色权限
+    'quanxian'          => [
+        1=>'上传',
+        2=>'筛选',
+        3=>'翻译',
+        4=>'审核',
+        5=>'后台管理'
+    ],
+    //角色控制器
+    'qxcontroller'=>[
+        1=>'Msg',
+        2=>'Xuan',
+        3=>'Trans',
+        4=>'Review',
+        5=>'Admin'
+    ]
 ];

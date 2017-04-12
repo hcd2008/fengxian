@@ -1,0 +1,66 @@
+{layout name="layout"}
+<br>
+<div class="container">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" ><a href="{:url('msg/upload')}">上传信息</a></li>
+	  <li role="presentation" class="active"><a href="{:url('msg/upList',array('status'=>2))}">已上传信息</a></li>
+	</ul>
+	<h4>编辑已上传信息</h4>
+	<form action="" method="post" enctype="multipart/form-data">
+	<table class="table table-bordered table-hover">
+		<tr>
+			<td width="120px">中文标题 <span class="red">*</span></td>
+			<td>
+				<input type="text" class="form-control myinput" size="20" name="title_cn" value="{$info.title_cn}">
+			</td>
+		</tr>
+		<tr>
+			<td>英文标题</td>
+			<td>
+				<input type="text" class="form-control myinput" size="20" name="title_en" value="{$info.title_en}">
+			</td>
+		</tr>
+		<tr>
+			<td>中文摘要</td>
+			<td>
+				<textarea name="zhaiyao_cn" class="form-control myinput" id="" cols="60" rows="5">{$info.zhaiyao_cn}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>英文摘要</td>
+			<td>
+				<textarea name="zhaiyao_en" class="form-control myinput" id="" cols="60" rows="5">{$info.zhaiyao_en}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>已上传附件</td>
+			<td>
+				<a href="/public/uploads/{$info.fujian}">查看</a>
+			</td>
+		</tr>
+		<tr>
+			<td>重新上传附件</td>
+			<td>
+				<input type="file" name="fujian" />
+			</td>
+		</tr>
+		<tr>
+			<td>来源名称</td>
+			<td>
+				<input type="text" class="form-control myinput" size="20" name="laiyuan" value="{$info.laiyuan}">
+			</td>
+		</tr>
+		<tr>
+			<td>来源链接</td>
+			<td>
+				<input type="text" class="form-control myinput" size="20" name="links" value="{$info.links}">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" class="btn btn-primary" value="提交">
+			</td>
+		</tr>
+	</table>
+	</form>		
+</div>

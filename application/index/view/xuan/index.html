@@ -2,9 +2,9 @@
 <br>
 <div class="container">
 	<ul class="nav nav-tabs">
-	  <li role="presentation" {if $status==1}class="active"{/if}><a href="{:url('msg/index')}">信息列表</a></li>
-	  <li role="presentation" {if $status==2}class="active"{/if}><a href="{:url('msg/index',array('status'=>2))}">翻译列表</a></li>
-	  <li role="presentation" {if $status==0}class="active"{/if}><a href="{:url('msg/index',array('status'=>0))}">回收站</a></li>
+	  <li role="presentation" {if $status==1}class="active"{/if}><a href="{:url('xuan/index')}">信息列表</a></li>
+	  <li role="presentation" {if $status==2}class="active"{/if}><a href="{:url('xuan/index',array('status'=>2))}">翻译列表</a></li>
+	  <li role="presentation" {if $status==0}class="active"{/if}><a href="{:url('xuan/index',array('status'=>0))}">回收站</a></li>
 	</ul>
 	<div class="search">
 		<form class="form-inline">
@@ -32,11 +32,11 @@
 				<td align="center">{$v.laiyuan}</td>
 				<td align="center">{:date('Y-m-d',$v['addtime'])}</td>
 				<td align="center">
-					<a href="{:url('index/msg/show',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/kan.png" title="查看"></a>&nbsp;
-					{if $v['status']==1}<a href="{:url('index/msg/addInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/jia.png" title="加入翻译"></a>&nbsp;{/if}
-					{if $v['status']==2}<a href="{:url('index/msg/rmInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/shan.png" title="从翻译列表中移除"></a>&nbsp;{/if}
-					{if $v['status']>0}<a href="{:url('index/msg/delInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/delete.png" title="删除"></a>&nbsp;{/if}
-					{if $v['status']==0}<a href="{:url('index/msg/ryInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/huifu.png" title="恢复"></a>&nbsp;{/if}
+					<a href="{:url('index/xuan/show',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/kan.png" title="查看"></a>&nbsp;
+					{if $v['status']==1}<a href="{:url('index/xuan/addInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/jia.png" title="加入翻译"></a>&nbsp;{/if}
+					{if $v['status']==2}<a href="{:url('index/xuan/rmInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/shan.png" title="从翻译列表中移除"></a>&nbsp;{/if}
+					{if $v['status']>0}<a onclick="return confirm('确定删除吗？')" href="{:url('index/xuan/delInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/delete.png" title="删除"></a>&nbsp;{/if}
+					{if $v['status']==0}<a href="{:url('index/xuan/ryInfo',array('itemid'=>$v['itemid']))}"><img src="__ASSETS__images/huifu.png" title="恢复"></a>&nbsp;{/if}
 				</td>
 			</tr>
 		{/foreach}

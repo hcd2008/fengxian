@@ -6,6 +6,9 @@
 
 	class Login extends Controller{
 		public function index(){
+			if(Session::has('uid')){
+				$this->success("您已登录",'index/index');
+			}
 			return $this->fetch();
 		}
 		/**
@@ -42,8 +45,14 @@
 				$password=dpassword($password,$passsalt);
 				$res=Db::name('member')->where('username',$username)->where('password',$password)->find();
 				if($res){
+					$roleid=$res['roleid'];
+					$rolearr=Db::name('role')->where('id',$roleid)->find();
+					if($rolearr['status']!=1){
+						$this->error('您的用户组已禁用，请联系管理员','login/index');
+					}
 					Session::set('uid',$res['userid']);
 					Session::set('uname',$res['username']);
+					Session::set('roleid',$res['roleid']);
 					return true;
 				}else{
 					return false;

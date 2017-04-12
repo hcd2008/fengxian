@@ -9,22 +9,19 @@
 					</div>
 					<div class="lists">
 						<div class="panel panel-info">
-						  <div class="panel-heading">已上传信息</div>
-						  <div class="panel-body">
-						    <p>今日共上传77条</p>
-						  </div>
-							<table class="table">
-								<tr>
-									<th width="60%">标题</th>
-									<th width="20%">附件</th>
-									<th width="20%">操作</th>
-								</tr>
-								<tr>
-									<td>北京16家银行取消首房9折优惠 执行95折利率</td>
-									<td></td>
-									<td>筛选</td>
-								</tr>
-							</table>
+						  <!-- Default panel contents -->
+						  <div class="panel-heading text-center">已上传信息<span class="badge">{$yichuan_sum}</span></div>
+						  <!-- <div class="panel-body">
+						    <p>...</p>
+						  </div> -->
+						  <!-- List group -->
+						  <ul class="list-group">
+						  	{volist name="yichuan" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('msg/editinfo',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
+						  </ul>
 						  
 						</div>
 					</div>
@@ -37,22 +34,19 @@
 					<div class="lists">
 						<div class="panel panel-info">
 						  <!-- Default panel contents -->
-						  <div class="panel-heading">待翻译信息</div>
-						  <div class="panel-body">
+						  <div class="panel-heading text-center">待翻译信息<span class="badge">{$daifan_sum}</span></div>
+						  <!-- <div class="panel-body">
 						    <p>...</p>
-						  </div>
-
+						  </div> -->
 						  <!-- List group -->
 						  <ul class="list-group">
-						    <li class="list-group-item">Cras justo odio</li>
-						    <li class="list-group-item">Dapibus ac facilisis in</li>
-						    <li class="list-group-item">Morbi leo risus</li>
-						    <li class="list-group-item">Porta ac consectetur ac</li>
-						    <li class="list-group-item">Vestibulum at eros</li>
-						    <li class="list-group-item">Cras justo odio</li>
-						    <li class="list-group-item">Dapibus ac facilisis in</li>
-						    <li class="list-group-item">Morbi leo risus</li>
+						  	{volist name="daifan" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('trans/fanyi',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
 						  </ul>
+						  
 						</div>
 					</div>
 				</div>
@@ -64,22 +58,16 @@
 					<div class="lists">
 						<div class="panel panel-info">
 						  <!-- Default panel contents -->
-						  <div class="panel-heading">待审核信息</div>
-						  <div class="panel-body">
-						    <p>...</p>
-						  </div>
-
+						  <div class="panel-heading text-center">待审核信息<span class="badge">{$daishen_sum}</span></div>
 						  <!-- List group -->
 						  <ul class="list-group">
-						    <li class="list-group-item">Cras justo odio</li>
-						    <li class="list-group-item">Dapibus ac facilisis in</li>
-						    <li class="list-group-item">Morbi leo risus</li>
-						    <li class="list-group-item">Porta ac consectetur ac</li>
-						    <li class="list-group-item">Vestibulum at eros</li>
-						    <li class="list-group-item">Cras justo odio</li>
-						    <li class="list-group-item">Dapibus ac facilisis in</li>
-						    <li class="list-group-item">Morbi leo risus</li>
+						  	{volist name="daishen" id="vo"}
+						     <li class="list-group-item">
+								<a href="{:url('review/show',array('itemid'=>$vo['itemid']))}">{$vo.title_cn}</a>
+						     </li>
+						    {/volist}
 						  </ul>
+						  
 						</div>
 					</div>
 				</div>

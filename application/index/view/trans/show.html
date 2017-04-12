@@ -1,0 +1,73 @@
+{layout name="layout"}
+<br>
+<div class="container">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" {if $info.status==2}class="active"{/if}><a href="{:url('trans/index',array('status'=>2))}">待翻译</a></li>
+	  <li role="presentation" {if $info.status==3}class="active"{/if}><a href="{:url('trans/index',array('status'=>3))}">已翻译</a></li>
+	  <li role="presentation" {if $info.status==4}class="active"{/if}><a href="{:url('trans/index',array('status'=>4))}">已提交审核</a></li>
+	  <li role="presentation" {if $info.status==6}class="active"{/if}><a href="{:url('trans/index',array('status'=>6))}">未通过审核</a></li>
+	</ul>
+			<h4>信息详情</h4>
+			<form action="" method="post" enctype="multipart/form-data">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<td width="120px">中文标题 </td>
+					<td>
+						{$info.title_cn}
+					</td>
+				</tr>
+				<tr>
+					<td>英文标题</td>
+					<td>
+						{$info.title_en}
+					</td>
+				</tr>
+				<tr>
+					<td>中文摘要</td>
+					<td>
+						{$info.zhaiyao_cn}
+					</td>
+				</tr>
+				<tr>
+					<td>英文摘要</td>
+					<td>
+						{$info.zhaiyao_en}
+					</td>
+				</tr>
+				<tr>
+					<td>全文附件</td>
+					<td>
+						<a href="/uploads/{$info.fujian}">下载</a>
+					</td>
+				</tr>
+				{if $info.fy_fujian}
+				<tr>
+					<td>翻译后附件</td>
+					<td>
+						<a href="/uploads/{$info.fy_fujian}">下载</a>
+					</td>
+				</tr>
+				{/if}
+				<tr>
+					<td>来源名称</td>
+					<td>
+						{$info.laiyuan}
+					</td>
+				</tr>
+				<tr>
+					<td>来源链接</td>
+					<td>
+						{$info.links}
+					</td>
+				</tr>
+				{if $info.status==4}
+				<tr>
+					<td colspan="2">
+						<a href="{:url('index/trans/cheshen',array('itemid'=>$info['itemid']))}" class="btn btn-danger">撤回</a>
+					</td>
+				</tr>
+				{/if}
+			</table>
+			</form>
+		
+</div>

@@ -14,6 +14,10 @@
 		public function __construct(){
 			// $this->isLogin();
 			parent::__construct();
+			
+		}
+		public function _initialize(){
+			$this->isLogin();
 			$this->assign('controller',$this->request->controller());
 		}
 		/**
@@ -24,9 +28,8 @@
 		 * @return    boolean                  [description]
 		 */
 		public function isLogin(){
-			$uid=isset($_SESSION['uid'])?intval($_SESSION['uid']):0;
-			if($uid==0){
-				$this->redirect("login/index");
+			if(!Session::has('uid')){
+				$this->redirect('login/index');
 			}
 		}
 	}

@@ -96,8 +96,8 @@
 			if($this->request->isPost()){
 				$param=$this->request->param();
 				isset($param['roleid']) or $this->error('请选择用户角色');
-				$param['password']=='' or $param['passsalt']=random(8);
-				if($param['passsalt']){
+				if($param['password']!=''){
+					$param['passsalt']=random(8);
 					$param['password']=dpassword($param['password'],$param['passsalt']);
 				}else{
 					unset($param['password']);

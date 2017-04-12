@@ -15,10 +15,10 @@
 		<img src="__ASSETS__images/foodmate.gif" alt="">
 		<ul class="nav navbar-nav nav-pills navbar-right">
 			<li {if $controller=='Index'}class="active"{/if}><a href="{:url('index/index')}">首页</a></li>
-			<li {if $controller=='Msg'&&$action=='upload'}class="active"{/if}><a href="{:url('msg/upload')}">上传</a></li>
-			<li {if $controller=='Msg'&&$action=='index'}class="active"{/if}><a href="{:url('msg/index')}">筛选</a></li>
-			<li {if $controller=='Msg'&&$action=='tranlist'}class="active"{/if}><a href="{:url('msg/tranList')}">翻译</a></li>
-			<li><a href="{:url('msg/index')}">审核</a></li>
+			<?php if(in_array('Msg',$qx)){ ?><li {if $controller=='Msg'}class="active"{/if}><a href="{:url('msg/upload')}">上传</a></li><?php } ?>
+			<?php if(in_array('Xuan',$qx)){ ?><li {if $controller=='Xuan'}class="active"{/if}><a href="{:url('xuan/index')}">筛选</a></li><?php } ?>
+			<?php if(in_array('Trans',$qx)){ ?><li {if $controller=='Trans'}class="active"{/if}><a href="{:url('trans/index')}">翻译</a></li><?php } ?>
+			<?php if(in_array('Review',$qx)){ ?><li {if $controller=='Review'}class="active"{/if}><a href="{:url('review/index')}">审核</a></li><?php } ?>
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$Think.session.uname}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -30,5 +30,9 @@
 		</ul>
 	</div>
 {__CONTENT__}
+<div id="footer">
+	版权所有 © 2016-2018 烟台富美特食品科技有限公司，并保留所有权利
+</div>
+
 </body>
 </html>

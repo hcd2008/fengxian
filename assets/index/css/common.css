@@ -25,3 +25,23 @@
 .search{
 	margin:20px 0;
 }
+#footer{
+	height:100px;
+	line-height: 100px;
+	text-align:center;
+	color:#777;
+}
+.infolst{
+	margin-top: 20px;
+}
+.infodetail{
+	border-bottom: 1px solid #ddd;
+	margin:10px;
+	margin-bottom: 20px;
+}
+.liuyanzhe{
+	color:#379BE9;
+}
+.liuyantime{
+	color:#ccc;
+}

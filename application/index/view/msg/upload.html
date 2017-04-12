@@ -1,10 +1,15 @@
 {layout name="layout"}
+<br>
 <div class="container">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="{:url('msg/upload')}">上传信息</a></li>
+	  <li role="presentation" ><a href="{:url('msg/upList',array('status'=>2))}">已上传信息</a></li>
+	</ul>
 	<div class="row">
 		<div class="col-md-8">
-			<h4>上传信息</h4>
+			<br>
 			<form action="" method="post" enctype="multipart/form-data">
-			<table class="table table-hover">
+			<table class="table table-bordered table-hover">
 				<tr>
 					<td width="120px">中文标题 <span class="red">*</span></td>
 					<td>

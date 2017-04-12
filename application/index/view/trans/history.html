@@ -1,12 +1,11 @@
 {layout name="layout"}
+<br>
 <div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			<h4>信息详情</h4>
+			<h4>历史信息详情</h4>
 			<form action="" method="post" enctype="multipart/form-data">
-			<table class="table table-hover">
+			<table class="table table-bordered table-hover">
 				<tr>
-					<td width="120px">中文标题 <span class="red">*</span></td>
+					<td width="120px">中文标题 </td>
 					<td>
 						{$info.title_cn}
 					</td>
@@ -30,11 +29,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td>全文附件 <span class="red">*</span></td>
+					<td>全文附件</td>
 					<td>
 						<a href="/uploads/{$info.fujian}">下载</a>
 					</td>
 				</tr>
+				{if $info.fy_fujian}
+				<tr>
+					<td>翻译后附件</td>
+					<td>
+						<a href="/uploads/{$info.fy_fujian}">下载</a>
+					</td>
+				</tr>
+				{/if}
 				<tr>
 					<td>来源名称</td>
 					<td>
@@ -47,22 +54,16 @@
 						{$info.links}
 					</td>
 				</tr>
+				{if $info.status==4}
 				<tr>
 					<td colspan="2">
-						<a href="" class="btn btn-primary">加入翻译</a>
-						<a href="" class="btn btn-primary">添加翻译</a>
-						<a href="" class="btn btn-primary">评论</a>
-						<a href="" class="btn btn-primary">审核</a>
+						<a href="{:url('index/review/yes',array('itemid'=>$info['itemid']))}" class="btn btn-primary">审核通过</a>&nbsp;
+						<a onclick="return confirm('请在评论栏里说明拒绝通过的理由')" href="{:url('index/review/no',array('itemid'=>$info['itemid']))}" class="btn btn-danger">拒绝通过</a>
 					</td>
 				</tr>
+				{/if}
 			</table>
 			</form>
-		</div>
-		<div class="col-md-4">
-			<h4>信息状态</h4>
-			<ul class="list-group">
-				
-			</ul>
-		</div>
-	</div>
+		
+		
 </div>

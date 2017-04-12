@@ -1,0 +1,97 @@
+{layout name="layout"}
+<br>
+<div class="container">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" {if $info.status==4}class="active"{/if}><a href="{:url('review/index',array('status'=>4))}">待审核</a></li>
+	  <li role="presentation" {if $info.status==5}class="active"{/if}><a href="{:url('review/index',array('status'=>5))}">已通过审核</a></li>
+	  <li role="presentation" {if $info.status==6}class="active"{/if}><a href="{:url('review/index',array('status'=>6))}">已拒绝通过</a></li>
+	</ul>
+	<div class="row">
+		<div class="col-md-8">
+			<h4>信息详情</h4>
+			<form action="" method="post" enctype="multipart/form-data">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<td width="120px">中文标题 </td>
+					<td>
+						{$info.title_cn}
+					</td>
+				</tr>
+				<tr>
+					<td>英文标题</td>
+					<td>
+						{$info.title_en}
+					</td>
+				</tr>
+				<tr>
+					<td>中文摘要</td>
+					<td>
+						{$info.zhaiyao_cn}
+					</td>
+				</tr>
+				<tr>
+					<td>英文摘要</td>
+					<td>
+						{$info.zhaiyao_en}
+					</td>
+				</tr>
+				<tr>
+					<td>全文附件</td>
+					<td>
+						<a href="/uploads/{$info.fujian}">下载</a>
+					</td>
+				</tr>
+				{if $info.fy_fujian}
+				<tr>
+					<td>翻译后附件</td>
+					<td>
+						<a href="/uploads/{$info.fy_fujian}">下载</a>
+					</td>
+				</tr>
+				{/if}
+				<tr>
+					<td>来源名称</td>
+					<td>
+						{$info.laiyuan}
+					</td>
+				</tr>
+				<tr>
+					<td>来源链接</td>
+					<td>
+						{$info.links}
+					</td>
+				</tr>
+				{if $info.status==4}
+				<tr>
+					<td colspan="2">
+						<a href="{:url('index/review/yes',array('itemid'=>$info['itemid']))}" class="btn btn-primary">审核通过</a>&nbsp;
+						<a onclick="return confirm('请在评论栏里说明拒绝通过的理由')" href="{:url('index/review/no',array('itemid'=>$info['itemid']))}" class="btn btn-danger">拒绝通过</a>
+					</td>
+				</tr>
+				{/if}
+			</table>
+			</form>
+		</div>
+		<div class="col-md-4">
+			<h4>评论</h4>
+			<form action="{:url('comment/add')}" method="post">
+				<input type="hidden" name="infoid" value="{$itemid}">
+				<textarea name="content" id="" cols="30" rows="7" class="form-control"></textarea>
+				<br>
+				<input type="submit" class="btn btn-primary" value="添加评论">
+			</form>
+			<div class='infolst'>
+				<h4>全部评论</h4>
+				{if count($lists)}
+					{volist name='lists' id='vo'}
+						<div class="infodetail">
+							<p><span class="liuyanzhe">{$vo.username}({$vo.truename})</span>&nbsp;&nbsp;<span class="liuyantime">{:date('Y-m-d H:i:s',$vo.addtime)}</span></p>
+							<p>{$vo.content}</p>
+						</div>
+					{/volist}
+				{else}
+					<p>暂无评论</p>
+				{/if}
+			</div>
+		</div>
+</div>

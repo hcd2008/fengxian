@@ -15,42 +15,43 @@
   <div class="nav">
    <ul>
     <li><a href="{:url('index/index/index')}" target="_blank">前台首页</a></li>
-    <li><a href="index.php?rec=clear_cache">清除缓存</a></li>
-    <li><a href="http://www.mycodes.net" target="_blank">帮助</a></li>
+    <!-- <li><a href="index.php?rec=clear_cache">清除缓存</a></li>
+    <li><a href="http://www.mycodes.net" target="_blank">帮助</a></li> -->
     <li class="noRight"><a href="module.html">食品伙伴网</a></li>
    </ul>
    <ul class="navRight">
-    <li class="M noLeft"><a href="JavaScript:void(0);">您好，admin</a>
+    <li class="M noLeft"><a href="JavaScript:void(0);">您好，{$Think.session.uname}</a>
      <div class="drop mUser">
       <a href="manager.php?rec=edit&id=1">编辑我的个人资料</a>
       <a href="manager.php?rec=cloud_account">设置云账户</a>
      </div>
     </li>
-    <li class="noRight"><a href="login.php?rec=logout">退出</a></li>
+    <li class="noRight"><a href="{:url('login/logout')}">退出</a></li>
    </ul>
   </div>
  </div>
 </div>
 <!-- dcHead 结束 --> <div id="dcLeft"><div id="menu">
  <ul class="top">
-  <li><a href="index.html"><i class="home"></i><em>管理首页</em></a></li>
+  <li><a href="{:url('index/index')}"><i class="home"></i><em>管理首页</em></a></li>
  </ul>
+ <!-- 
  <ul>
   <li {if $controller=='Setting'}class="cur"{/if}><a href="{:url('setting/index')}"><i class="system"></i><em>网站设置</em></a></li>
   <li {if $controller=='Theme'}class="cur"{/if}><a href="{:url('theme/index')}"><i class="theme"></i><em>主题风格</em></a></li>
  </ul>
  <ul>
   <li><a href="system.html"><i class="system"></i><em>标准设置</em></a></li>
- </ul>
+ </ul> -->
    <ul>
   <li {if $controller=='Member'}class="cur"{/if}><a href="{:url('admin/member/index')}"><i class="productCat"></i><em>用户管理</em></a></li>
   <li {if $controller=='Group'}class="cur"{/if}><a href="{:url('group/index')}"><i class="user"></i><em>角色管理</em></a></li>
-  <li><a href="{:url('admin/record/index')}"><i class="managerLog"></i><em>操作记录</em></a></li>
+  <!-- <li><a href="{:url('admin/record/index')}"><i class="managerLog"></i><em>操作记录</em></a></li> -->
  </ul>
-  <ul>
+  <!-- <ul>
   <li><a href="article_category.html"><i class="nav"></i><em>常用链接</em></a></li>
   <li><a href="article.html"><i class="article"></i><em>我的客服</em></a></li>
- </ul>
+ </ul> -->
 </div></div>
 {__CONTENT__}
 <div class="clear"></div>
